@@ -1,0 +1,38 @@
+{
+	"type":"record",
+	"name":"Log",
+	"fields": [
+	  {"name":"time", "type":{"type":"long","logicalType":"timestamp-micros"}},
+	  {"name":"level", "type":{
+		  "type":"enum",
+		  "name":"Level",
+		  "symbols":[
+		    "LEVEL_UNSPECIFIED",
+			"LEVEL_TRACE",
+			"LEVEL_DEBUG",
+			"LEVEL_INFO",
+			"LEVEL_WARN",
+			"LEVEL_ERROR",
+			"LEVEL_FATAL"
+		  ]
+	  }},
+	  {"name":"tags", "default":[], "type": {
+		  "type":"array",
+		  "items":[ "string" ]
+	  }},
+	  {"name":"msg", "type":"string"},
+	  {"name":"attributes", "type":{
+		  "type":"map",
+		  "values":[
+			"null",
+		    "string",
+			"int",
+			"long",
+			"float",
+			"double",
+			"boolean",
+			{"type":"fixed","size":16,"logicalType":"uuid","name":"UUID"}
+		  ]
+	  }}
+	]
+}
